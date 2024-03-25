@@ -85,8 +85,8 @@ class Banners {
 
 class Products {
   int? id;
-  double? price;
-  double? oldPrice;
+  dynamic price;
+  dynamic oldPrice;
   dynamic discount;
   String? image;
   String? name;

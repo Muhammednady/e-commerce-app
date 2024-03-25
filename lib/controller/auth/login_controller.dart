@@ -62,6 +62,7 @@ class LoginController extends GetxController {
   ConnectionStatus connectionStatus = ConnectionStatus.NONE;
 
    login() async{
+     //Get.offNamed(AppRoutes.home);
      isLoading.value = true;
     ConnectionStatus connectionStatus = ConnectionStatus.LOADING;
     update();

@@ -1,4 +1,3 @@
-import 'package:ecommerceapp/controller/onboarding_controller.dart';
 import 'package:ecommerceapp/core/classes/crud.dart';
 import 'package:ecommerceapp/core/constant/routes.dart';
 import 'package:ecommerceapp/core/localization/change_lang.dart';

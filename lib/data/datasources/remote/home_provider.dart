@@ -11,6 +11,6 @@ class HomeProvider {
   getProducts() async {
     var response = await crud.getData(AppLinks.home, {});
     // r is supposed to be model
-    return response.fold((l) => l, (r) => r);
+    return response.fold((l) => l, (r) => ProductsModel.fromJson(r));
   }
 }
