@@ -4,6 +4,7 @@ import 'package:ecommerceapp/view/screen/auth/forget_password/reset_password.dar
 import 'package:ecommerceapp/view/screen/auth/login.dart';
 import 'package:ecommerceapp/view/screen/auth/sign_up.dart';
 import 'package:ecommerceapp/view/screen/home.dart';
+import 'package:ecommerceapp/view/screen/home_screen.dart';
 import 'package:ecommerceapp/view/screen/language.dart';
 import 'package:ecommerceapp/view/screen/onBoarding.dart';
 import 'package:ecommerceapp/view/screen/settings.dart';
@@ -33,7 +34,7 @@ List<GetPage<dynamic>> routes = [
   GetPage(name: AppRoutes.ONBOARDING, page: () => const OnBoarding()),
   GetPage(name: AppRoutes.LOGIN, page: () => const Login()),
   GetPage(name: AppRoutes.SIGNUP, page: () => const SignUpView()),
-  GetPage(name: AppRoutes.home, page: () => const Home()),
+  GetPage(name: AppRoutes.home, page: () => HomeScreen()),
   GetPage(name: AppRoutes.forgetPassword, page: () => const Forgetpassword()),
   GetPage(name: AppRoutes.resetPassword, page: () => const ResetPassword()),
   GetPage(name: AppRoutes.settings, page: () => const SettingsView()),
