@@ -10,15 +10,17 @@ class HomeScreenController extends GetxController{
 
   int currentPage = 0;
   List<BottomAppBarModel> bottomItems = [
-    BottomAppBarModel(Icons.home_outlined, 'Home'),
-    BottomAppBarModel(Icons.favorite_outline_sharp, 'Favorite'),
-    BottomAppBarModel(Icons.person_outline, 'Profile'),
-    BottomAppBarModel(Icons.settings_outlined, 'Settings'),
+    BottomAppBarModel(icon: Icons.home_outlined, title: 'Home'),
+    BottomAppBarModel(icon: Icons.favorite_outline_sharp, title: 'Favorite'),
+    BottomAppBarModel(),
+    BottomAppBarModel(icon: Icons.person_outline, title: 'Profile'),
+    BottomAppBarModel(icon: Icons.settings_outlined, title: 'Settings'),
 
   ];
   final List<Widget> homeWidgets = [
     Home(),
     const Center(child: Text('Favorite'),),
+    const SizedBox(),
     const Center(child: Text('Profile'),),
     const Center(child: Text('Settings'),),
 

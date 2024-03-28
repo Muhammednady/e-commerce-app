@@ -44,7 +44,10 @@ class Crud {
     try {
       if (await connectedToInternet()) {
         var response = await http.get(
-          Uri.parse(url)
+           Uri.parse(url) ,// headers: {
+        //     'lang':'en',
+        //      'Accept':'application/json'
+        // }
         );
 
         if (response.statusCode == 200 || response.statusCode == 201) {

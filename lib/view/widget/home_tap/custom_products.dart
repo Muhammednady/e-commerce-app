@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../../core/constant/colors.dart';
-import '../../../data/model/products_model.dart';
+import '../../../data/model/productsandbanners_model.dart';
 
 class CustomProducts extends StatelessWidget {
   final List<Products>? products;

@@ -23,7 +23,7 @@ class CustomBottomBarButton extends StatelessWidget {
               icon,
               color: active
                   ? AppColors.primary
-                  : AppColors.black,
+                  : AppColors.grey,
             ),
             Text(
               title,
@@ -31,7 +31,7 @@ class CustomBottomBarButton extends StatelessWidget {
                 fontSize: 15.0,
                 color: active
                     ? AppColors.primary
-                    : AppColors.black,
+                    : AppColors.grey,
               ),
             )
           ],

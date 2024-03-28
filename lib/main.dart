@@ -22,7 +22,7 @@ void main() async {
  String? token  = await FirebaseMessaging.instance.getToken();
  print("Token is :::: $token");
  Get.find<MyServices>().sharedPreferences.setString('Token', token!);
-
+ 
 
 
   runApp(const MyApp());

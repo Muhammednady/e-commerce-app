@@ -2,8 +2,8 @@
 import 'package:flutter/cupertino.dart';
 
 class BottomAppBarModel{
-  final IconData icon;
-  final String title;
+  final IconData? icon;
+  final String? title;
 
-  BottomAppBarModel(this.icon, this.title);
+  BottomAppBarModel({this.icon, this.title});
 }

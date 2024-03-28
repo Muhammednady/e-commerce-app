@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../core/constant/colors.dart';
+import '../../core/constant/colors.dart';
 
 class CustomAppBar extends StatelessWidget {
   final TextEditingController searchController;

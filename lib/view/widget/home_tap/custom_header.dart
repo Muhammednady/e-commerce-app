@@ -12,7 +12,7 @@ class CustomHeader extends StatelessWidget{
         margin: const EdgeInsets.symmetric(vertical: 10.0),
     child:  Text(
       header,
-    style:const TextStyle(color: AppColors.primary),
+    style:const TextStyle(color: AppColors.primary ).copyWith(fontSize: 20.0),
     ));
   }
 }

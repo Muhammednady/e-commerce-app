@@ -6,7 +6,7 @@ import 'package:ecommerceapp/core/constant/colors.dart';
 import 'package:ecommerceapp/core/constant/routes.dart';
 import 'package:ecommerceapp/view/widget/home_tap/custom_categories.dart';
 import 'package:ecommerceapp/view/widget/home_tap/custom_header.dart';
-import 'package:ecommerceapp/view/widget/home_tap/custom_appBar.dart';
+import 'package:ecommerceapp/view/widget/custom_appBar.dart';
 import 'package:ecommerceapp/view/widget/home_tap/custom_card.dart';
 import 'package:ecommerceapp/view/widget/home_tap/custom_products.dart';
 import 'package:flutter/cupertino.dart';
@@ -43,14 +43,14 @@ class Home extends GetView<HomeController> {
             //   height: 10.0,
             // ),
             const CustomHeader(header: 'Categories'),
+            controller.categories.isEmpty
+                ? Center(
+                    child: CircularProgressIndicator(
+                      color: AppColors.primary,
+                    ),
+                  )
+                : CustomCategories(blackImages: controller.categories),
 
-            CustomCategories(
-                blackImages: Random().nextInt(100).isEven
-                    ? CategoriesImages.coloredImages
-                    : CategoriesImages.blackImages),
-            // const SizedBox(
-            //   height: 10.0,
-            // ),
             const CustomHeader(header: 'Products For You'),
             controller.products.isEmpty
                 ? const Center(
@@ -68,54 +68,56 @@ class Home extends GetView<HomeController> {
                       style: TextStyle(color: Colors.grey),
                     ),
                   )
-                : CustomProducts(banners: controller.banners,)
-                // : SizedBox(
-                //     //color: Colors.yellow,
-                //     height: 150.0,
-                //     child: ListView.separated(
-                //       scrollDirection: Axis.horizontal,
-                //       physics: const BouncingScrollPhysics(),
-                //       itemCount: controller.banners.length,
-                //       itemBuilder: (context, index) {
-                //         return Stack(
-                //           children: [
-                //             Padding(
-                //               padding: const EdgeInsets.only(left: 10, top: 10),
-                //               child: Image.network(
-                //                 alignment: AlignmentDirectional.center,
-                //                 height: 100.0,
-                //                 width: 100.0,
-                //                 controller.banners[index].image!,
-                //                 fit: BoxFit.fill,
-                //               ),
-                //             ),
-                //             Container(
-                //               height: 120.0,
-                //               width: 120.0,
-                //               decoration: BoxDecoration(
-                //                   color: Colors.black.withOpacity(0.2),
-                //                   borderRadius:
-                //                       BorderRadiusDirectional.circular(15.0)),
-                //             ),
-                //             // Padding(
-                //             //   padding:
-                //             //   const EdgeInsets.only(top: 5.0, left: 5.0),
-                //             //   child: Text(
-                //             //     textAlign: TextAlign.center,
-                //             //     controller.banners[index].
-                //             //         .substring(0, 20),
-                //             //     style: TextStyle(
-                //             //         fontSize: 12, color: AppColors.white),
-                //             //   ),
-                //             //),
-                //           ],
-                //         );
-                //       },
-                //       separatorBuilder: (context, index) => const SizedBox(
-                //         width: 10.0,
-                //       ),
-                //     ),
-                //   ),
+                : CustomProducts(
+                    banners: controller.banners,
+                  )
+            // : SizedBox(
+            //     //color: Colors.yellow,
+            //     height: 150.0,
+            //     child: ListView.separated(
+            //       scrollDirection: Axis.horizontal,
+            //       physics: const BouncingScrollPhysics(),
+            //       itemCount: controller.banners.length,
+            //       itemBuilder: (context, index) {
+            //         return Stack(
+            //           children: [
+            //             Padding(
+            //               padding: const EdgeInsets.only(left: 10, top: 10),
+            //               child: Image.network(
+            //                 alignment: AlignmentDirectional.center,
+            //                 height: 100.0,
+            //                 width: 100.0,
+            //                 controller.banners[index].image!,
+            //                 fit: BoxFit.fill,
+            //               ),
+            //             ),
+            //             Container(
+            //               height: 120.0,
+            //               width: 120.0,
+            //               decoration: BoxDecoration(
+            //                   color: Colors.black.withOpacity(0.2),
+            //                   borderRadius:
+            //                       BorderRadiusDirectional.circular(15.0)),
+            //             ),
+            //             // Padding(
+            //             //   padding:
+            //             //   const EdgeInsets.only(top: 5.0, left: 5.0),
+            //             //   child: Text(
+            //             //     textAlign: TextAlign.center,
+            //             //     controller.banners[index].
+            //             //         .substring(0, 20),
+            //             //     style: TextStyle(
+            //             //         fontSize: 12, color: AppColors.white),
+            //             //   ),
+            //             //),
+            //           ],
+            //         );
+            //       },
+            //       separatorBuilder: (context, index) => const SizedBox(
+            //         width: 10.0,
+            //       ),
+            //     ),
+            //   ),
           ],
         ),
       ),

@@ -18,6 +18,7 @@ class AppLinks {
   // const REGISTER = 'register';
   // const UPDATE_PROFILE = 'update-profile';
   // const SEARCH_PRODUCT = 'products/search';
+  static const String resetpassword = "$baseUrl/resetpassword.php";
 
   static const String baseUrl = "https://600apps.com/elkhodarMarket/api/v1";
   static const String baseUrl1 = "https://student.valuxapps.com/api";
@@ -25,7 +26,8 @@ class AppLinks {
   static const String signup = "$baseUrl1/register";
   static const String login = "$baseUrl1/login";
   static const String home = "$baseUrl1/home";
+  static const String products = "$baseUrl1/products";
   static const String categories = "$baseUrl1/categories";
 
-  static const String resetpassword = "$baseUrl/resetpassword.php";
+
 }
