@@ -6,9 +6,11 @@ import 'package:ecommerceapp/view/screen/auth/login.dart';
 import 'package:ecommerceapp/view/screen/auth/sign_up.dart';
 import 'package:ecommerceapp/view/screen/home.dart';
 import 'package:ecommerceapp/view/screen/home_screen.dart';
+import 'package:ecommerceapp/view/screen/item_details.dart';
 import 'package:ecommerceapp/view/screen/language.dart';
 import 'package:ecommerceapp/view/screen/onBoarding.dart';
 import 'package:ecommerceapp/view/screen/settings.dart';
+import 'package:flutter/cupertino.dart';
 
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
@@ -40,6 +42,8 @@ List<GetPage<dynamic>> routes = [
   GetPage(name: AppRoutes.resetPassword, page: () => const ResetPassword()),
   GetPage(name: AppRoutes.settings, page: () => const SettingsView()),
   GetPage(name: AppRoutes.itemsView, page: () =>   ItemsScreen()),
-
+  GetPage(name: AppRoutes.itemDetails, page: () => ItemDetailsView())
 
 ];
+
+

@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../core/constant/connection_status.dart';
+import '../core/constant/routes.dart';
 import '../data/datasources/remote/items_provider.dart';
 import '../data/model/categories_model.dart';
 
@@ -166,6 +167,10 @@ class ItemsController extends GetxController{
     update();
     update();
 
+  }
+
+  goToItemDetails(Data product){
+    Get.toNamed(AppRoutes.itemDetails , arguments: product);
   }
 
 

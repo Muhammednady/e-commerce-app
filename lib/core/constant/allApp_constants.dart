@@ -33,3 +33,7 @@ const String USER_MODEL = 'user_model';
  const String FAILURE_RESPONSE = 'failure';
 
  final APP_TOKEN = Get.find<MyServices>().sharedPreferences.getString('token');
+
+ //images
+
+const networkImage = 'https://www.freepik.com/free-photo/good-boy-posing-with-decorative-frame_907482.htm#fromView=search&page=1&position=3&uuid=8fb5ffe7-3e92-4d62-a5ce-4cdeb968bf6e';

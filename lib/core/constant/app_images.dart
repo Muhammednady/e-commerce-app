@@ -3,6 +3,7 @@
 
 
 class AppImagesPath {
+  static const String trial      = 'assets/images/try.jpg';
   static const String _rootImages       = 'assets/images';
   static const String _lottie       = 'assets/lottie';
 
