@@ -1,3 +1,5 @@
+import 'package:ecommerceapp/core/functions/categorize.dart';
+
 class ProductsModel {
   bool? status;
   String? message;
@@ -101,6 +103,7 @@ class Data {
   List<String>? images;
   bool? inFavorites;
   bool? inCart;
+  int? catid;
 
   Data(
       {this.id,
@@ -121,6 +124,7 @@ class Data {
     discount = json['discount'];
     image = json['image'];
     name = json['name'];
+    catid = detectCategory(json['name']);
     description = json['description'];
     images = json['images'].cast<String>();
     inFavorites = json['in_favorites'];
@@ -135,6 +139,7 @@ class Data {
     data['discount'] = this.discount;
     data['image'] = this.image;
     data['name'] = this.name;
+    data['catid']=this.catid;
     data['description'] = this.description;
     data['images'] = this.images;
     data['in_favorites'] = this.inFavorites;

@@ -14,30 +14,52 @@ class ItemsController extends GetxController{
 
   List<MyData> categories = [];
   List<Data> products = [];
+  List<Data> favorites = [];
+  List<Data> filteredProducts = [];
+  List<Data> inCartProducts = [];
   late int selectedCategory;
   late TextEditingController searchController;
   @override
   void onInit() {
     // TODO: implement onInit
     super.onInit();
-    getProducts();
     searchController = TextEditingController();
     categories = Get.arguments['categories'];
     selectedCategory = Get.arguments['selectedID'];
 
+    getProducts().then((value) {
+      categorizeProducts(selectedCategory);
+    });
+
+
+  }
+
+  void categorizeProducts(int id){
+    filteredProducts.clear();
+    connectionStatus = ConnectionStatus.LOADING;
+    //getProducts();
+    // filteredProducts.addAll(products.map<Data>((e) => e.catid! == id).toList());
+    // products.map<Data>((e) => e.catid == id? e:  );
+    products.forEach((element) {
+      if(element.catid == id) {
+        filteredProducts.add(element);
+      }
+    });
+    connectionStatus = ConnectionStatus.SUCCESS;
+    update();
   }
 
   ItemsProvider itemsProvider = ItemsProvider(crud:Get.find(),);
   RxBool isLoading = false.obs; //another solution for loading
   ConnectionStatus connectionStatus = ConnectionStatus.NONE;
 
-  getProducts()async{
+  Future<void> getProducts()async{
     isLoading.value = true;
     ConnectionStatus connectionStatus = ConnectionStatus.LOADING;
     update();
 
 
-    var response =  await itemsProvider.getProducts();
+    var response =  await itemsProvider.getProducts('en');
     print('response is $response');
 
     if(response is ConnectionStatus){
@@ -57,9 +79,9 @@ class ItemsController extends GetxController{
         connectionStatus = ConnectionStatus.SUCCESS;
 
         products.addAll(cast<ProductsModel>(response).allData!.data!);
-        print('=====================================');
-        print('Products in Items controller $products');
-        print('=====================================');
+
+
+
 
 
       }
@@ -79,6 +101,8 @@ class ItemsController extends GetxController{
 
   void changeCategory(int id ){
     selectedCategory = id;
+    //categorization
+    categorizeProducts(id);
     update();
   }
 
@@ -86,6 +110,63 @@ class ItemsController extends GetxController{
 
   onNotificationClicked(){}
 
+  void addToFavorite(int index) {
+    connectionStatus = ConnectionStatus.LOADING;
+    update();
+    //
+    // products[index].inFavorites = ! products[index].inFavorites!;
+    //
+    // if(products[index].inFavorites!){
+    //
+    //   favorites.add(products[index]);
+    //
+    // }else{
+    //   favorites.remove(products[index]);
+    // }
+    // update();
+
+    filteredProducts[index].inFavorites = ! filteredProducts[index].inFavorites!;
+
+    if(filteredProducts[index].inFavorites!){
+
+      favorites.add(filteredProducts[index]);
+
+    }else{
+      favorites.remove(filteredProducts[index]);
+    }
+    connectionStatus = ConnectionStatus.SUCCESS;
+    update();
+  }
+
+  void addToCart(int index) {
+    connectionStatus = ConnectionStatus.LOADING;
+    update();
+
+  //   products[index].inCart = !products[index].inCart!;
+  //   if(products[index].inCart!){
+  //
+  //     inCartProducts.add(products[index]);
+  //
+  //   }else{
+  //     inCartProducts.remove(products[index]);
+  //   }
+  //   update();
+  //
+  // }
+    filteredProducts[index].inCart = !filteredProducts[index].inCart!;
+    if(filteredProducts[index].inCart!){
+
+      inCartProducts.add(filteredProducts[index]);
+
+    }else{
+      inCartProducts.remove(filteredProducts[index]);
+    }
+
+    connectionStatus = ConnectionStatus.SUCCESS;
+    update();
+    update();
+
+  }
 
 
 

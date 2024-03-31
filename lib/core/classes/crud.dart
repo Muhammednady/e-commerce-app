@@ -40,14 +40,14 @@ class Crud {
   }
   ////////////////////////////////////////////////
   Future<Either<ConnectionStatus, Map<String,dynamic>>> getData(
-      String url, Map data) async {
+      String url, String lang, Map data ) async {
     try {
       if (await connectedToInternet()) {
         var response = await http.get(
-           Uri.parse(url) ,// headers: {
-        //     'lang':'en',
-        //      'Accept':'application/json'
-        // }
+           Uri.parse(url) , headers: {
+             'lang':lang,
+              'Accept':'application/json'
+         }
         );
 
         if (response.statusCode == 200 || response.statusCode == 201) {

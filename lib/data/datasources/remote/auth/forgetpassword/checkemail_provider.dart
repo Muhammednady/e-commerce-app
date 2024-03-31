@@ -9,7 +9,7 @@ class CheckEmailProvider {
 
   checkEmail(Map data) async {
    // var reponse = await crud.postData(AppLinks.checkemail, data);
-    var reponse = await crud.getData(AppLinks.login, data);
+    var reponse = await crud.getData(AppLinks.login,'en', data);
     return reponse.fold((l) => l, (r) => r);
   }
 }

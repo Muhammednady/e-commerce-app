@@ -7,6 +7,10 @@ String token  = 'fPaf7DKYSTWfKltMPUEY8c:APA91bGPQml05gTqPZ_XYnQ4SyPgyBwyghWAcQ4m
 const String ENGLISH = 'english';
 const String ARABIC = 'arabic';
 
+const String ENGLISH_SYMBOL = 'en';
+const String ARABIC_SYMBOL = 'ar';
+
+const String LOCALE = 'locale';
 //login-signup states
 const String FORGET_PASSWORD = 'forget';
 const String CONFIRM_USER = 'confirm';

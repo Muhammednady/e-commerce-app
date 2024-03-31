@@ -13,7 +13,7 @@ class TestData {
   TestData({required this.crud});
 
   postData() async {
-    final response = await crud.getData(AppLinks.login, {});
+    final response = await crud.getData(AppLinks.login,'en', {});
 
     return response.fold((l) => l, (r) => r);
   }

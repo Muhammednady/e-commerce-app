@@ -8,10 +8,11 @@ import '../../../core/constant/colors.dart';
 import '../../../data/datasources/constant/constant.dart';
 import '../../../data/model/categories_model.dart';
 
-class CustomCategories extends GetView<HomeController>{
+class CustomCategories extends GetView<HomeController> {
   final List<MyData> blackImages;
 
   const CustomCategories({super.key, required this.blackImages});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,8 +25,8 @@ class CustomCategories extends GetView<HomeController>{
         itemBuilder: (context, index) {
           //blackImages[index].id;
           return InkWell(
-            onTap: (){
-              controller.goToItemsView(blackImages,blackImages[index].id!);
+            onTap: () {
+              controller.goToItemsView(blackImages, blackImages[index].id!);
             },
             child: Column(
               children: [
@@ -44,8 +45,7 @@ class CustomCategories extends GetView<HomeController>{
                       width: 80.0,
                       decoration: BoxDecoration(
                           color: AppColors.primary.withOpacity(0.3),
-                          borderRadius:
-                          BorderRadiusDirectional.circular(20.0)),
+                          borderRadius: BorderRadiusDirectional.circular(20.0)),
                     )
                   ],
                 ),
@@ -53,7 +53,9 @@ class CustomCategories extends GetView<HomeController>{
                   height: 5.0,
                 ),
                 Text(
-                  blackImages[index].name!,
+                  blackImages[index].name!.length > 10
+                      ? '${blackImages[index].name!.substring(0, 11)}...'
+                      : blackImages[index].name!,
                   style: const TextStyle(fontSize: 15.0),
                 )
               ],
@@ -66,5 +68,4 @@ class CustomCategories extends GetView<HomeController>{
       ),
     );
   }
-
 }

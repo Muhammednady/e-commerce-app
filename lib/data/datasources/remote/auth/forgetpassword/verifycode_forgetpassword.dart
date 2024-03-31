@@ -10,7 +10,7 @@ class VerifyCodeForgetProvider {
 
   verifyCode(Map data) async {
     // var response = await crud.postData(AppLinks.verifyCodeforget, data);
-    var response = await crud.getData(AppLinks.login, data);
+    var response = await crud.getData(AppLinks.login,'en', data);
     return response.fold((l) => l, (r) => r);
   }
 

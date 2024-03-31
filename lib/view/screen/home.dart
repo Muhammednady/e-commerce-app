@@ -44,7 +44,7 @@ class Home extends GetView<HomeController> {
             // ),
             const CustomHeader(header: 'Categories'),
             controller.categories.isEmpty
-                ? Center(
+                ? const Center(
                     child: CircularProgressIndicator(
                       color: AppColors.primary,
                     ),

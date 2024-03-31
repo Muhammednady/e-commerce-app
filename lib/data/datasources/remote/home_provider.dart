@@ -9,15 +9,15 @@ class HomeProvider {
 
   HomeProvider(this.crud);
 
-  getProducts() async {
-    var response = await crud.getData(AppLinks.home, {});
+  getProducts(String lang) async {
+    var response = await crud.getData(AppLinks.home,lang, {});
     // r is supposed to be model
     return response.fold((l) => l, (r) => ProductsAndBannersModel.fromJson(r));
   }
 
 
-  getCategories() async {
-    var response = await crud.getData(AppLinks.categories, {});
+  getCategories(String lang) async {
+    var response = await crud.getData(AppLinks.categories,lang ,{});
     // r is supposed to be model
     return response.fold((l) => l, (r) => MyCategoriesModel.fromJson(r));
   }

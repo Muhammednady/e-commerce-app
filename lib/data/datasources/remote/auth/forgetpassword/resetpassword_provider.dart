@@ -9,7 +9,7 @@ class ResetPasswordProvider {
 
   resetPassword(Map data) async {
    //  var response = await crud.postData(AppLinks.resetpassword, data);
-    var response = await crud.getData(AppLinks.resetpassword, data);
+    var response = await crud.getData(AppLinks.resetpassword,'en', data);
     return response.fold((l) => l, (r) => r);
   }
 

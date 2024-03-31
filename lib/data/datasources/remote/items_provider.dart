@@ -12,8 +12,8 @@ class ItemsProvider extends GetConnect{
 
   ItemsProvider({required this.crud});
 
-  getProducts()async{
-    var response = await crud.getData(AppLinks.products,{});
+  getProducts(String lang)async{
+    var response = await crud.getData(AppLinks.products,lang,{});
     return response.fold((l) => l, (r) => ProductsModel.fromJson(r));
   }
 
