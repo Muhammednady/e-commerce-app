@@ -25,7 +25,9 @@ const String PASSWORD = 'password';
 //start
 const String ONBOARDING = 'onBoarding';
 const String LANGUAGE = 'lang';
-
+//favorites-cart
+const String favorites_list = 'favorites_list';
+const String cart_list = 'cart_list';
 //user_model
 const String USER_MODEL = 'user_model';
 

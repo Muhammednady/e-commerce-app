@@ -34,7 +34,9 @@ class Home extends GetView<HomeController> {
                 searchController: TextEditingController(),
                 label: 'Find Product',
                 onSearchPressed: () {},
-                onNotificationPressed: () {}),
+                onNotificationPressed: () {},
+                onFavoritePressed: controller.goToFavorites,
+            ),
             const SizedBox(
               height: 10.0,
             ),

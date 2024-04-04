@@ -1,6 +1,10 @@
 
 
+import 'dart:convert';
+
 import 'package:dartz/dartz.dart';
+import 'package:ecommerceapp/core/constant/allApp_constants.dart';
+import 'package:ecommerceapp/core/services/myservices.dart';
 import 'package:ecommerceapp/data/model/products_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +17,8 @@ import '../data/model/categories_model.dart';
 
 class ItemsController extends GetxController{
 
+
+  late MyServices myServices ;
   List<MyData> categories = [];
   List<Data> products = [];
   List<Data> favorites = [];
@@ -27,12 +33,16 @@ class ItemsController extends GetxController{
     searchController = TextEditingController();
     categories = Get.arguments['categories'];
     selectedCategory = Get.arguments['selectedID'];
-
+    myServices = Get.find<MyServices>();
     getProducts().then((value) {
       categorizeProducts(selectedCategory);
     });
 
 
+  }
+
+  void goToFavorites(){
+    Get.toNamed(AppRoutes.favorites);
   }
 
   void categorizeProducts(int id){
@@ -173,7 +183,15 @@ class ItemsController extends GetxController{
     Get.toNamed(AppRoutes.itemDetails , arguments: product);
   }
 
+@override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
 
+    myServices.sharedPreferences.setString(favorites_list,jsonEncode(favorites));
+    myServices.sharedPreferences.setString(cart_list,jsonEncode(inCartProducts));
+
+  }
 
 
 }

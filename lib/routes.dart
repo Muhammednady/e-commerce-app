@@ -1,7 +1,8 @@
 import 'package:ecommerceapp/core/classes/middle_ware.dart';
 import 'package:ecommerceapp/view/screen/auth/forget_password/forget_password.dart';
 import 'package:ecommerceapp/view/screen/auth/forget_password/reset_password.dart';
-import 'package:ecommerceapp/view/screen/auth/items_screen.dart';
+import 'package:ecommerceapp/view/screen/favorites_view.dart';
+import 'package:ecommerceapp/view/screen/items_screen.dart';
 import 'package:ecommerceapp/view/screen/auth/login.dart';
 import 'package:ecommerceapp/view/screen/auth/sign_up.dart';
 import 'package:ecommerceapp/view/screen/home.dart';
@@ -42,7 +43,8 @@ List<GetPage<dynamic>> routes = [
   GetPage(name: AppRoutes.resetPassword, page: () => const ResetPassword()),
   GetPage(name: AppRoutes.settings, page: () => const SettingsView()),
   GetPage(name: AppRoutes.itemsView, page: () =>   ItemsScreen()),
-  GetPage(name: AppRoutes.itemDetails, page: () => ItemDetailsView())
+  GetPage(name: AppRoutes.itemDetails, page: () => ItemDetailsView()),
+  GetPage(name: AppRoutes.favorites, page: () => FavoritesDisplay())
 
 ];
 

@@ -10,8 +10,8 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
-import '../../../core/constant/connection_status.dart';
-import '../../widget/customcategory_itemslist.dart';
+import '../../core/constant/connection_status.dart';
+import '../widget/customcategory_itemslist.dart';
 
 class ItemsScreen extends GetView<ItemsController> {
   @override
@@ -29,6 +29,7 @@ class ItemsScreen extends GetView<ItemsController> {
                 searchController: controller.searchController,
                 label: 'Find Product',
                 onSearchPressed: controller.onSearchClicked,
+                onFavoritePressed: controller.goToFavorites,
                 onNotificationPressed: controller.onNotificationClicked),
             const SizedBox(
               height: 15.0,
@@ -61,8 +62,8 @@ class ItemsScreen extends GetView<ItemsController> {
                         itemCount: controller.filteredProducts.length,
                         itemBuilder: (context, index) => InkWell(
                           onTap: () {
-                          controller.goToItemDetails(controller.filteredProducts[index]);
-
+                            controller.goToItemDetails(
+                                controller.filteredProducts[index]);
                           },
                           child: Card(
                               clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -73,7 +74,8 @@ class ItemsScreen extends GetView<ItemsController> {
                                   Stack(
                                     children: [
                                       Hero(
-                                        tag: controller.filteredProducts[index].id!,
+                                        tag: controller
+                                            .filteredProducts[index].id!,
                                         child: CachedNetworkImage(
                                           // fit: BoxFit.fill,
                                           height: Get.width / 2.7,

@@ -102,6 +102,9 @@ class HomeController extends GetxController {
 
     update();
   }
+  void goToFavorites(){
+    Get.toNamed(AppRoutes.favorites);
+  }
 
   goToItemsView(List<MyData> categories, int id) {
     Get.toNamed(AppRoutes.itemsView,

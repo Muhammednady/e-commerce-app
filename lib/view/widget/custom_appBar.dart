@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/constant/colors.dart';
@@ -8,15 +7,16 @@ class CustomAppBar extends StatelessWidget {
   final String label;
   final void Function()? onSearchPressed;
   final void Function()? onNotificationPressed;
+  final void Function()? onFavoritePressed;
 
-  const CustomAppBar(
-      {super.key,
-      required this.searchController,
-      required this.label,
-      required this.onSearchPressed,
-      required this.onNotificationPressed,
-
-      });
+  const CustomAppBar({
+    super.key,
+    required this.searchController,
+    required this.label,
+    required this.onSearchPressed,
+    required this.onNotificationPressed,
+    required this.onFavoritePressed,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -56,6 +56,23 @@ class CustomAppBar extends StatelessWidget {
             child: IconButton(
                 onPressed: onNotificationPressed,
                 icon: const Icon(Icons.notifications_active_outlined)),
+          ),
+          const SizedBox(
+            width: 10.0,
+          ),
+          Container(
+            height: 60.0,
+            //width: double.infinity,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadiusDirectional.circular(10.0),
+              color: AppColors.primary.withOpacity(0.2),
+            ),
+            child: IconButton(
+                onPressed: onFavoritePressed,
+                icon: const Icon(
+                  Icons.favorite_border_rounded,
+                  color: AppColors.black,
+                )),
           )
         ],
       ),
