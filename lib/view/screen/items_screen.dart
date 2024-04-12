@@ -30,7 +30,7 @@ class ItemsScreen extends GetView<ItemsController> {
                 label: 'Find Product',
                 onSearchPressed: controller.onSearchClicked,
                 onFavoritePressed: controller.goToFavorites,
-                onNotificationPressed: controller.onNotificationClicked),
+             ),
             const SizedBox(
               height: 15.0,
             ),

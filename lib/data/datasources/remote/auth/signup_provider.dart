@@ -12,9 +12,8 @@ class SignUpProvider{
 
 
  postData({required Map<String , dynamic> data}) async {
-    //final response = await crud.postData(AppLinks.signup, data);
-   //final response = await crud.getData(AppLinks.signup, {});
-   final response = await crud.getData('https://jsonplaceholder.typicode.com/posts','en', {});
+
+   final response = await crud.postData(AppLinks.signup, data);
     return response.fold((l) => l, (r) => r);
   }
 

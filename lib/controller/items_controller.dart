@@ -18,7 +18,7 @@ import '../data/model/categories_model.dart';
 class ItemsController extends GetxController{
 
 
-  late MyServices myServices ;
+  MyServices myServices = Get.find<MyServices>();
   List<MyData> categories = [];
   List<Data> products = [];
   List<Data> favorites = [];
@@ -33,7 +33,7 @@ class ItemsController extends GetxController{
     searchController = TextEditingController();
     categories = Get.arguments['categories'];
     selectedCategory = Get.arguments['selectedID'];
-    myServices = Get.find<MyServices>();
+    //myServices = Get.find<MyServices>();
     getProducts().then((value) {
       categorizeProducts(selectedCategory);
     });
@@ -190,6 +190,14 @@ class ItemsController extends GetxController{
 
     myServices.sharedPreferences.setString(favorites_list,jsonEncode(favorites));
     myServices.sharedPreferences.setString(cart_list,jsonEncode(inCartProducts));
+
+  }
+  @override
+  InternalFinalCallback<void> get onDelete  {
+    myServices.sharedPreferences.setString(favorites_list,jsonEncode(favorites));
+    myServices.sharedPreferences.setString(cart_list,jsonEncode(inCartProducts));
+
+    return super.onDelete;
 
   }
 

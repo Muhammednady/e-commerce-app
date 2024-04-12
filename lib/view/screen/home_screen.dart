@@ -1,5 +1,6 @@
 import 'package:ecommerceapp/controller/homescreen_controller.dart';
 import 'package:ecommerceapp/core/constant/colors.dart';
+import 'package:ecommerceapp/view/screen/cart_view.dart';
 import 'package:ecommerceapp/view/screen/home.dart';
 import 'package:ecommerceapp/view/widget/home_screen/Custombottombar_button.dart';
 import 'package:ecommerceapp/view/widget/home_screen/bottomappbar_view.dart';
@@ -26,7 +27,9 @@ class HomeScreen extends GetView<HomeScreenController> {
                   color: AppColors.white,
                   //size: 30.0,
                 ),
-                onPressed: () {}),
+                onPressed: () {
+                  Get.to(CartView());
+                }),
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.centerDocked,
             bottomNavigationBar:  BottomAppBarView()));

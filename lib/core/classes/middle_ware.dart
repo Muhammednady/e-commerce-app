@@ -18,8 +18,13 @@ int? get priority => priority;
 
   @override
   RouteSettings? redirect(String? route) {
+    if(myServices.sharedPreferences.getString(USER_MODEL) != null){
+      if(myServices.sharedPreferences.getString(USER_MODEL)!.isNotEmpty) {
+        return const RouteSettings(name: AppRoutes.home);
+      }
+    }
     if(myServices.sharedPreferences.getBool(ONBOARDING) != null){
-      return RouteSettings(name: AppRoutes.LOGIN);
+      return const RouteSettings(name: AppRoutes.LOGIN);
     }
     return null;
   }

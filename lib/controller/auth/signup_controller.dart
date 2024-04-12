@@ -88,7 +88,7 @@ class SignUpControler extends GetxController {
      update();
     if (formkey!.currentState!.validate()) {
       Map<String, dynamic> values = {
-        "username": userNameController.text,
+        "name": userNameController.text,
         "email": emailController.text,
         "phone": phoneController.text,
         "password": passwordController.text,
@@ -105,16 +105,14 @@ class SignUpControler extends GetxController {
         //It is supposed that result is model instance .
         connectionStatus = ConnectionStatus.SUCCESS;
         //It is supposed to be in login screen(storing model).
-        Get.find<MyServices>()
-            .sharedPreferences
-            .setString(USER_MODEL, result.toString());
-        goToVerifyCodeScreen();
+        if(result['status'] == false){
+          Get.snackbar('Error', result['message']);
+        }else {
+          goToVerifyCodeScreen();
+        }
       }
       connectionStatus = ConnectionStatus.SUCCESS;
       isLoading.value = false;
-
-      print('isLoading.value inside      ${isLoading.value}');
-
 
     }else{
       connectionStatus = ConnectionStatus.NONE;

@@ -1,90 +1,111 @@
+import 'package:ecommerceapp/core/constant/app_images.dart';
 import 'package:ecommerceapp/core/constant/colors.dart';
 import 'package:ecommerceapp/core/constant/routes.dart';
 import 'package:ecommerceapp/core/localization/change_lang.dart';
 import 'package:ecommerceapp/view/widget/auth/customtxt_titleAuth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 
+import '../../controller/settings_controller.dart';
 import '../../core/constant/allApp_constants.dart';
 
-class SettingsView extends GetView<LanguageController> {
+class SettingsView extends GetView<SettingsController> {
   const SettingsView();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: CustomTitleAuthText(title: 'Settings'),
-          centerTitle: true,
-        ),
-        body: GetBuilder<LanguageController>(
-            init: controller,
-            builder: (controller) => Container(
-              width: Get.width,
-              child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        'choose_lang'.tr,
-                        selectionColor: AppColors.primary,
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyText1!
-                            .copyWith(decoration: TextDecoration.underline),
-                      ),
-                      const SizedBox(
-                        height: 30.0,
-                      ),
-                      MaterialButton(
-                        onPressed: () {
-                          //controller.changeLocale(ARABIC);
-                          Get.updateLocale(Locale('ar'));
-                          Get.offAllNamed(AppRoutes.LOGIN);
-                        },
-                        color: AppColors.primary,
-                        child: Text(
-                          'ar'.tr,
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyText1!
-                              .copyWith(fontSize: 18.0),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 20.0,
-                      ),
-                      MaterialButton(
-                        onPressed: () {
-                         // controller.changeLocale(ENGLISH);
-                          Get.updateLocale(Locale('en'));
-                          Get.offAllNamed(AppRoutes.LOGIN);
-                        },
-                        color: AppColors.primary,
-                        child: Text(
-                          'en'.tr,
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyText1!
-                              .copyWith(fontSize: 18.0),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 50.0,
-                      ),
-                      // OnBoardingButton(
-                      //     margin: 80.0,
-                      //     text: 'Click Here',
-                      //     textColor: Colors.black,
-                      //     onClick: (){
-                      //       exit(0);
-                      //     },
-                      //     radius: 0.0,
-                      //     height: 50.0
-                      // )
-                    ],
+    Get.lazyPut(() => SettingsController());
+    return GetBuilder<SettingsController>(
+      init: controller,
+      builder: (controller) => Container(
+        padding: const EdgeInsets.all(10.0),
+        width: Get.width,
+        child: Column(children: [
+          Stack(
+            clipBehavior: Clip.none,
+            alignment: Alignment.bottomCenter,
+            children: [
+              Container(
+                height: Get.width / 2.9,
+                color: AppColors.primary,
+              ),
+              const Positioned(
+                top: 80.0,
+                child: CircleAvatar(
+                  radius: 43.0,
+                  backgroundColor: AppColors.white,
+                  child: CircleAvatar(
+                    radius: 40.0,
+                    backgroundColor: AppColors.white,
+                    backgroundImage: AssetImage(AppImagesPath.avatar),
                   ),
-            )));
+                ),
+              )
+            ],
+          ),
+          const SizedBox(
+            height: 70.0,
+          ),
+          Card(
+            child: ListTile(
+              onTap: () {},
+              leading: Text(
+                'Disable Notifications',
+                style: Theme.of(context).textTheme.bodySmall!.copyWith(fontSize: 17.0),
+              ),
+              trailing: Switch(
+                splashRadius: 10.0,
+                value: controller.switchValue.value,
+                onChanged: (val) => controller.changeSwitch(val),
+              ),
+            ),
+          ),
+          Card(
+            child: ListTile(
+              onTap: () {},
+              leading: Text(
+                'Address',
+                style: Theme.of(context).textTheme.bodySmall!.copyWith(fontSize: 17.0),
+              ),
+              trailing:const Icon(Icons.location_on_outlined)
+            ),
+          ),
+          Card(
+            child: ListTile(
+              onTap: () {},
+              leading: Text(
+                'About us',
+                style: Theme.of(context).textTheme.bodySmall!.copyWith(fontSize: 17.0),
+              ),
+              trailing:const Icon(Icons.question_mark_outlined)
+            ),
+          ),
+          Card(
+            child: ListTile(
+              onTap: () {},
+              leading: Text(
+                'Contact us',
+                style: Theme.of(context).textTheme.bodySmall!.copyWith(fontSize: 17.0),
+              ),
+              trailing: const Icon(Icons.phone_callback_outlined)
+            ),
+          ),
+          Card(
+            child: ListTile(
+              onTap: () {
+                controller.logout();
+              },
+              leading: Text(
+                'Logout',
+                style: Theme.of(context).textTheme.bodySmall!.copyWith(fontSize: 17.0),
+              ),
+              trailing: const Icon(Icons.logout_outlined)
+            ),
+          ),
+        ]),
+      ),
+    );
   }
 }

@@ -28,6 +28,8 @@ class AppLinks {
   static const String home = "$baseUrl1/home";
   static const String products = "$baseUrl1/products";
   static const String categories = "$baseUrl1/categories";
+  static const String search = "$baseUrl1/products/search";
+  //https://student.valuxapps.com/api/products/search
 
 
 }

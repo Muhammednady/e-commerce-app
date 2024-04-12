@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:ecommerceapp/core/constant/colors.dart';
 import 'package:ecommerceapp/core/constant/connection_status.dart';
 import 'package:ecommerceapp/core/constant/routes.dart';
+import 'package:ecommerceapp/core/services/myservices.dart';
 import 'package:ecommerceapp/data/datasources/remote/auth/login_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -15,7 +18,7 @@ class LoginController extends GetxController {
   TextEditingController? emailController;
   TextEditingController? passwordController;
   GlobalKey<FormState>? formkey;
-
+  MyServices myServices = Get.find<MyServices>();
   RxBool obsecureText = true.obs;
   var visibIcon = Icons.visibility_outlined.obs;
 
@@ -62,14 +65,17 @@ class LoginController extends GetxController {
   ConnectionStatus connectionStatus = ConnectionStatus.NONE;
 
    login() async{
-     //Get.offNamed(AppRoutes.home);
      isLoading.value = true;
     ConnectionStatus connectionStatus = ConnectionStatus.LOADING;
     update();
 
     if (formkey!.currentState!.validate()) {
 
-     var response =  await loginProvider.postData();
+
+     var response =  await loginProvider.postData({
+       'email':emailController!.text,
+       'password':passwordController!.text
+     });
 
      if(response is ConnectionStatus){
        connectionStatus = response;
@@ -80,14 +86,17 @@ class LoginController extends GetxController {
                ? 'server_failure'.tr
                : 'offline_failure'.tr);
      }else{
-       // if(response['status'] == FAILURE_RESPONSE){
-       //   connectionStatus = ConnectionStatus.FAILURE;
-       // }else{
+       if(response['status'] == false){
+         connectionStatus = ConnectionStatus.FAILURE;
+         isLoading.value = false;
+         Get.rawSnackbar(message: response['message']);
+       }else{
        isLoading.value = false;
          connectionStatus = ConnectionStatus.SUCCESS;
          Get.offAllNamed(AppRoutes.home);
-
-      // }
+         myServices.sharedPreferences.setString(USER_MODEL, jsonEncode(response['data']));
+       Get.snackbar(  'Success',  response['message']);
+       }
 
 
      }

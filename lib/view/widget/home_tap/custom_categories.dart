@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerceapp/controller/homescreen_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -34,11 +35,25 @@ class CustomCategories extends GetView<HomeController> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(left: 10, top: 10),
-                      child: Image.network(
-                          alignment: AlignmentDirectional.center,
-                          height: 60.0,
-                          width: 60.0,
-                          blackImages[index].image!),
+                      child: CachedNetworkImage(
+                        alignment: Alignment.center,
+                        height: 60.0,
+                        width: 60.0,
+                        imageUrl: blackImages[index].image!,
+                        placeholder: (context, url) => const Center(
+                          child: CircularProgressIndicator(
+                            color: AppColors.primary,
+                          ),
+                        ),
+                        errorWidget: (context, url, error) => const Center(
+                          child: Icon(Icons.error_outline_outlined),
+                        ),
+                      ),
+                      // child: Image.network(
+                      //     alignment: AlignmentDirectional.center,
+                      //     height: 60.0,
+                      //     width: 60.0,
+                      //     blackImages[index].image!),
                     ),
                     Container(
                       height: 80.0,

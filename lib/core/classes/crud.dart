@@ -68,20 +68,21 @@ class Crud {
       //  return Future.error(e.toString());
     }
   }
-  Future<Either<ConnectionStatus, Map>> postData(
+  Future<Either<ConnectionStatus, Map<String,dynamic>>> postData(
       String url, Map data) async {
     try {
       if (await connectedToInternet()) {
         var response = await http.post(
             Uri.parse(url) , body: data,
             headers: {
-              'Content-Type':'application/json',
-              'authorization':'Bearer $token'
+              'lang':'en',
+              'Accept':'application/json',
             }
         );
 
         if (response.statusCode == 200 || response.statusCode == 201) {
-          print(jsonDecode(response.body));
+             print('===================================----Search----=====================');
+             print(jsonDecode(response.body));
           return Right(jsonDecode(response.body ));
         } else {
           return const Left(ConnectionStatus.SERVERFAILURE);

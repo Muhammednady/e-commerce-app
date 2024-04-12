@@ -3,12 +3,14 @@ import 'dart:ui';
 
 import 'package:ecommerceapp/controller/hometap_controller.dart';
 import 'package:ecommerceapp/core/constant/colors.dart';
+import 'package:ecommerceapp/core/constant/connection_status.dart';
 import 'package:ecommerceapp/core/constant/routes.dart';
 import 'package:ecommerceapp/view/widget/home_tap/custom_categories.dart';
 import 'package:ecommerceapp/view/widget/home_tap/custom_header.dart';
 import 'package:ecommerceapp/view/widget/custom_appBar.dart';
 import 'package:ecommerceapp/view/widget/home_tap/custom_card.dart';
 import 'package:ecommerceapp/view/widget/home_tap/custom_products.dart';
+import 'package:ecommerceapp/view/widget/home_tap/search_tap.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -29,49 +31,71 @@ class Home extends GetView<HomeController> {
         //color: AppColors.primary.withOpacity(0.4),
         padding: const EdgeInsetsDirectional.all(20.0),
         child: ListView(
+          scrollDirection: Axis.vertical,
+          physics: const BouncingScrollPhysics(),
           children: [
+            if (controller.connectionStatus == ConnectionStatus.LOADING)
+              const LinearProgressIndicator(
+                color: AppColors.primary,
+              ),
+            const SizedBox(height: 10.0,),
             CustomAppBar(
-                searchController: TextEditingController(),
-                label: 'Find Product',
-                onSearchPressed: () {},
-                onNotificationPressed: () {},
-                onFavoritePressed: controller.goToFavorites,
+              searchController: controller.searchController,
+              label: 'Find Product',
+              onChanged: controller.onWritten,
+              onSearchPressed: controller.searchForProduct,
+              onFavoritePressed: controller.goToFavorites,
             ),
-            const SizedBox(
-              height: 10.0,
-            ),
-            const CustomCard(title: 'A summer surprise ', body: 'Cashback 20%'),
-            // const SizedBox(
-            //   height: 10.0,
-            // ),
-            const CustomHeader(header: 'Categories'),
-            controller.categories.isEmpty
-                ? const Center(
-                    child: CircularProgressIndicator(
-                      color: AppColors.primary,
-                    ),
-                  )
-                : CustomCategories(blackImages: controller.categories),
+            controller.searchProducts.isNotEmpty
+                ? ListView.builder(
+                    //scrollDirection: Axis.vertical,
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: controller.searchProducts.length,
+                    itemBuilder: (context, index) =>
+                        SearchTap(product: controller.searchProducts[index]))
+                : Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(
+                        height: 10.0,
+                      ),
+                      const CustomCard(
+                          title: 'A summer surprise ', body: 'Cashback 20%'),
+                      // const SizedBox(
+                      //   height: 10.0,
+                      // ),
+                      const CustomHeader(header: 'Categories'),
+                      controller.categories.isEmpty
+                          ? const Center(
+                              child: CircularProgressIndicator(
+                                color: AppColors.primary,
+                              ),
+                            )
+                          : CustomCategories(
+                              blackImages: controller.categories),
 
-            const CustomHeader(header: 'Products For You'),
-            controller.products.isEmpty
-                ? const Center(
-                    child: Text(
-                      'No Products Yet !',
-                      style: TextStyle(color: Colors.grey),
-                    ),
-                  )
-                : CustomProducts(products: controller.products),
-            const CustomHeader(header: 'Banners'),
-            controller.products.isEmpty
-                ? const Center(
-                    child: Text(
-                      'No Banners Yet !',
-                      style: TextStyle(color: Colors.grey),
-                    ),
-                  )
-                : CustomProducts(
-                    banners: controller.banners,
+                      const CustomHeader(header: 'Products For You'),
+                      controller.products.isEmpty
+                          ? const Center(
+                              child: Text(
+                                'No Products Yet !',
+                                style: TextStyle(color: Colors.grey),
+                              ),
+                            )
+                          : CustomProducts(products: controller.products),
+                      const CustomHeader(header: 'Banners'),
+                      controller.products.isEmpty
+                          ? const Center(
+                              child: Text(
+                                'No Banners Yet !',
+                                style: TextStyle(color: Colors.grey),
+                              ),
+                            )
+                          : CustomProducts(
+                              banners: controller.banners,
+                            )
+                    ],
                   )
             // : SizedBox(
             //     //color: Colors.yellow,

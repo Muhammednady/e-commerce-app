@@ -1,5 +1,6 @@
 
 import 'package:ecommerceapp/view/screen/home.dart';
+import 'package:ecommerceapp/view/screen/settings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -11,18 +12,18 @@ class HomeScreenController extends GetxController{
   int currentPage = 0;
   List<BottomAppBarModel> bottomItems = [
     BottomAppBarModel(icon: Icons.home_outlined, title: 'Home'),
-    BottomAppBarModel(icon: Icons.favorite_outline_sharp, title: 'Favorite'),
+    BottomAppBarModel(icon: Icons.notifications_active_outlined, title: 'Notification'),
     BottomAppBarModel(),
-    BottomAppBarModel(icon: Icons.person_outline, title: 'Profile'),
+    BottomAppBarModel(icon: Icons.person_pin_outlined, title: 'Profile'),
     BottomAppBarModel(icon: Icons.settings_outlined, title: 'Settings'),
 
   ];
   final List<Widget> homeWidgets = [
-    Home(),
-    const Center(child: Text('Favorite'),),
+    const Home(),
+    const Center(child: Text('Notification'),),
     const SizedBox(),
     const Center(child: Text('Profile'),),
-    const Center(child: Text('Settings'),),
+    const SettingsView(),
 
   ];
   get getHomeWidget => homeWidgets[currentPage];
