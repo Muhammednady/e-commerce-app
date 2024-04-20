@@ -1,4 +1,7 @@
 import 'package:ecommerceapp/core/classes/middle_ware.dart';
+import 'package:ecommerceapp/view/screen/address_location.dart/address_add.dart';
+import 'package:ecommerceapp/view/screen/address_location.dart/address_details.dart';
+import 'package:ecommerceapp/view/screen/address_location.dart/address_view.dart';
 import 'package:ecommerceapp/view/screen/auth/forget_password/forget_password.dart';
 import 'package:ecommerceapp/view/screen/auth/forget_password/reset_password.dart';
 import 'package:ecommerceapp/view/screen/cart_view.dart';
@@ -47,7 +50,13 @@ List<GetPage<dynamic>> routes = [
   GetPage(name: AppRoutes.itemDetails, page: () => ItemDetailsView()),
   GetPage(name: AppRoutes.favorites, page: () => FavoritesDisplay()),
   GetPage(name: AppRoutes.cart, page: () => CartView()),
+  GetPage(name: AppRoutes.addressView, page: () => AddressView()),
+  GetPage(name: AppRoutes.addressAdd, page: () => AddressAdd()),
+  GetPage(name: AppRoutes.addressDetails, page: () => AddressDetails()),
+
 
 ];
+
+
 
 

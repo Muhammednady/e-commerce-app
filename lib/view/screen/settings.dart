@@ -64,7 +64,9 @@ class SettingsView extends GetView<SettingsController> {
           ),
           Card(
             child: ListTile(
-              onTap: () {},
+              onTap: () {
+                controller.goToAddressView();
+              },
               leading: Text(
                 'Address',
                 style: Theme.of(context).textTheme.bodySmall!.copyWith(fontSize: 17.0),

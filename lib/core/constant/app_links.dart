@@ -30,6 +30,11 @@ class AppLinks {
   static const String categories = "$baseUrl1/categories";
   static const String search = "$baseUrl1/products/search";
   //https://student.valuxapps.com/api/products/search
+  //addresses------Locations
+  static const domain = "https://kdamat.com";
+  static const apiEndpoint = "$domain/api/v1";
+  //https://kdamat.com/api/v1/locations
+  static const String location = '${apiEndpoint}/locations';
 
 
 }

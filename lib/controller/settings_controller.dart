@@ -37,4 +37,8 @@ class SettingsController extends GetxController{
     myServices.sharedPreferences.setString(USER_MODEL, "");
     Get.offAllNamed(AppRoutes.LOGIN);
   }
+
+  void goToAddressView() {
+    Get.toNamed(AppRoutes.addressView);
+  }
 }
