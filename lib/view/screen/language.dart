@@ -25,7 +25,7 @@ class LanguageView extends GetView<LanguageController> {
               selectionColor: AppColors.primary,
               style: Theme.of(context)
                   .textTheme
-                  .bodyText1!
+                  .bodyLarge!
                   .copyWith(decoration: TextDecoration.underline),
             ),
             const SizedBox(
@@ -38,7 +38,7 @@ class LanguageView extends GetView<LanguageController> {
               color: AppColors.primary,
               child: Text(
                 'ar'.tr,
-                style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 18.0),
+                style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontSize: 18.0),
               ),
             ),
             const SizedBox(
@@ -51,7 +51,7 @@ class LanguageView extends GetView<LanguageController> {
               color: AppColors.primary,
               child: Text(
                 'en'.tr,
-                style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 18.0),
+                style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontSize: 18.0),
               ),
             ),
             const SizedBox(height: 50.0,),

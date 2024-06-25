@@ -26,7 +26,7 @@ class SliderItem extends StatelessWidget {
           margin: const EdgeInsetsDirectional.only(bottom: 60.0),
           child: Text(
             title,
-            style: Theme.of(context).textTheme.bodyText1,
+            style: Theme.of(context).textTheme.bodyLarge,
           ),
         ),
         Image.asset(
@@ -42,7 +42,7 @@ class SliderItem extends StatelessWidget {
         Text(
           desc,
           textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.headline1 ,
+          style: Theme.of(context).textTheme.displayLarge ,
         ),
       ],
     );

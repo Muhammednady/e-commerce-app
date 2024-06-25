@@ -11,7 +11,7 @@ class CustomTitleAuthText extends StatelessWidget{
         title,
         textAlign: TextAlign.center,
         style:
-        Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 25));
+        Theme.of(context).textTheme.bodyLarge!.copyWith(fontSize: 25));
   }
 
 }

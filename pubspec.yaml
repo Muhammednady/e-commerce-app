@@ -16,7 +16,7 @@ dependencies:
   get: ^4.6.6
   #DateTime
   #jiffy: ^6.2.2
-  intl: ^0.18.1
+  intl: any
   http: ^1.2.0
   #Images
   cached_network_image: ^3.3.1 
@@ -52,7 +52,7 @@ dependencies:
   dartz: ^0.10.1
   #Google Auth
   google_sign_in: ^6.2.1  
-  device_preview: ^1.1.0
+  device_preview: any
   responsive_builder: ^0.7.0
   image_pickers: ^2.0.4+8
   jiffy: ^6.2.1

@@ -10,21 +10,21 @@ import 'colors.dart';
     colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary),
     useMaterial3: true,
     textTheme: const TextTheme(
-      headline1: TextStyle(
+      displayLarge: TextStyle(
           height: 1.6,
           fontSize: 16.0,
           color: AppColors.grey,
           fontFamily: 'Tinos'),
-      headline2: TextStyle(
+      displayMedium: TextStyle(
           fontSize: 18.0,
           color: AppColors.grey,
           fontFamily: 'Tinos'),
-      bodyText1: TextStyle(
+      bodyLarge: TextStyle(
           fontSize: 22.0,
           color: Colors.black,
           fontWeight: FontWeight.bold,
           fontFamily: 'Tinos'),
-      bodyText2:   TextStyle(
+      bodyMedium:   TextStyle(
           fontSize: 25.0,
           color: AppColors.grey,
           fontWeight: FontWeight.bold,
@@ -39,21 +39,21 @@ ThemeData appThemeAR = ThemeData(
     colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary),
     useMaterial3: true,
     textTheme: const TextTheme(
-      headline1: TextStyle(
+      displayLarge: TextStyle(
           height: 1.6,
           fontSize: 16.0,
           color: AppColors.grey,
-          fontFamily: 'Cairo'),
-      headline2: TextStyle(
+          fontFamily: 'Cairo'), 
+      displayMedium: TextStyle(
           fontSize: 18.0,
           color: AppColors.grey,
           fontFamily: 'Cairo'),
-      bodyText1: TextStyle(
+      bodyLarge: TextStyle(
           fontSize: 22.0,
           color: Colors.black,
           fontWeight: FontWeight.bold,
           fontFamily: 'Cairo'),
-      bodyText2:   TextStyle(
+      bodyMedium:   TextStyle(
           fontSize: 25.0,
           color: AppColors.grey,
           fontWeight: FontWeight.bold,
