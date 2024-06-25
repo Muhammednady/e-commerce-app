@@ -1,3 +1,4 @@
+import 'package:ecommerceapp/controller/addresses_location.dart/addressview_controller.dart';
 import 'package:ecommerceapp/core/classes/crud.dart';
 import 'package:ecommerceapp/core/constant/routes.dart';
 import 'package:ecommerceapp/core/localization/change_lang.dart';
@@ -16,14 +17,12 @@ import 'core/constant/app_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
- await  Firebase.initializeApp();
+  await Firebase.initializeApp();
 
   await MyServices.injectMyServices();
- String? token  = await FirebaseMessaging.instance.getToken();
- print("Token is :::: $token");
- Get.find<MyServices>().sharedPreferences.setString('Token', token!);
- 
-
+  String? token = await FirebaseMessaging.instance.getToken();
+  print("Token is :::: $token");
+  Get.find<MyServices>().sharedPreferences.setString('Token', token!);
 
   runApp(const MyApp());
 }
@@ -47,12 +46,12 @@ class MyApp extends StatelessWidget {
       //initialRoute: AppRoutes.home,
       getPages: routes,
       // home: LanguageView(),
-       initialBinding: initialBinding(),
+      initialBinding: initialBinding(),
     );
   }
 }
 
- getInitialRoute() {
+getInitialRoute() {
   var myServices = Get.find<MyServices>();
   if (myServices.sharedPreferences.getBool(LANGUAGE) == null) {
     return AppRoutes.language;
@@ -68,6 +67,7 @@ class initialBinding extends Bindings {
   @override
   void dependencies() {
     Get.put(Crud());
+   // Get.put(AddressViewController());
     // Get.lazyPut(() => OnBoardingController(), fenix: true);
     // //With fenix = true; you can Get.find<OnBoardingController>(); from any screen.
   }

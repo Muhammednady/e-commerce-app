@@ -40,7 +40,6 @@ class AddressAddController extends GetxController {
     if (result == LocationPermission.whileInUse ||
         result == LocationPermission.always) {
       currentPosition = await Geolocator.getCurrentPosition();
-      print('========================+++++++++++++0000000000');
       print(currentPosition!);
       cameraPosition = CameraPosition(
           zoom: 14.3,

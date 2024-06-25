@@ -38,4 +38,10 @@ class AppImagesPath {
   static const String onBoardingTwo    = '$_rootImages/onboardingtwo.PNG';
   static const String onBoardingThree  = '$_rootImages/onboardingthree.PNG';
   static const String onBoardingFour   = '$_rootImages/onboardingfour.PNG';
+    //===================Delivery Types==================================
+
+  static const String motorCycle1      ='$_rootImages/motorcycle1.png';
+  static const String motorCycle2      ='$_rootImages/motorcycle2.png';
+  static const String car1             ='$_rootImages/car1.png';
+  static const String car2             ='$_rootImages/car2.png';
 }
