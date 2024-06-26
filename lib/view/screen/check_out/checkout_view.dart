@@ -37,17 +37,18 @@ class CheckOutView extends GetView<CheckoutController> {
             )),
       ),
       bottomNavigationBar: Container(
-        height: 50.0,
+        height: 55.0,
         width: double.infinity,
         padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
         child: MaterialButton(
           onPressed: () {
             // Get.to(GetWidgetCacheElement(widget));
           },
+          // height: 45.0,
           color: AppColors.primary,
           // elevation: 0.0,
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(0.0)),
           child: const Text(
             'Checkout',
             style: TextStyle(
@@ -166,12 +167,20 @@ class CheckOutView extends GetView<CheckoutController> {
                       onTap: () {
                         controller.changeDeliveryType(1);
                       },
-                      child: DeliveryTypeWidget(
-                          title: 'Delivery',
-                          image: AppImagesPath.motorCycle2,
-                          isActive: checkOutController.deliveryType.value == 1
-                              ? true
-                              : false),
+                      child: AnimatedSwitcher(
+                        key: const Key('1'),
+                        duration: const Duration(milliseconds: 600),
+                        transitionBuilder: (child, animation) {
+                          return ScaleTransition(
+                              scale: animation, child: child);
+                        },
+                        child: DeliveryTypeWidget(
+                            title: 'Delivery',
+                            image: AppImagesPath.motorCycle2,
+                            isActive: checkOutController.deliveryType.value == 1
+                                ? true
+                                : false),
+                      ),
                     ),
                     const SizedBox(
                       width: 10.0,
@@ -180,12 +189,20 @@ class CheckOutView extends GetView<CheckoutController> {
                       onTap: () {
                         controller.changeDeliveryType(2);
                       },
-                      child: DeliveryTypeWidget(
-                          title: 'Receive',
-                          image: AppImagesPath.car2,
-                          isActive: checkOutController.deliveryType.value == 2
-                              ? true
-                              : false),
+                      child: AnimatedSwitcher(
+                        key: const Key('2'),
+                        duration: const Duration(milliseconds: 600),
+                        transitionBuilder: (child, animation) {
+                          return ScaleTransition(
+                              scale: animation, child: child);
+                        },
+                        child: DeliveryTypeWidget(
+                            title: 'Receive',
+                            image: AppImagesPath.car2,
+                            isActive: checkOutController.deliveryType.value == 2
+                                ? true
+                                : false),
+                      ),
                     ),
                   ],
                 ),
@@ -193,12 +210,17 @@ class CheckOutView extends GetView<CheckoutController> {
               const SizedBox(
                 height: 20.0,
               ),
-              const Text(
-                'Shipping Address',
-                style: TextStyle(
-                    color: AppColors.primary,
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.w900),
+              Obx(
+                () => Visibility(
+                  visible: checkOutController.deliveryType.value == 1,
+                  child: const Text(
+                    'Shipping Address',
+                    style: TextStyle(
+                        color: AppColors.primary,
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.w900),
+                  ),
+                ),
               ),
               const SizedBox(
                 height: 10.0,
