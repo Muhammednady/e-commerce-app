@@ -1,6 +1,7 @@
 import 'package:ecommerceapp/controller/itemDetails_controller.dart';
 import 'package:ecommerceapp/core/constant/colors.dart';
 import 'package:ecommerceapp/core/localization/change_lang.dart';
+import 'package:ecommerceapp/view/screen/check_out/checkout_view.dart';
 import 'package:ecommerceapp/view/widget/home_tap/custom_header.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -72,20 +73,25 @@ class ItemDetailsView extends GetView<ItemDetailsController> {
                         //         ARABIC_SYMBOL
                         //     ? Get.width / 4.3
                         //     : null,
-                        child: Container(
-                          height: 200.0,
-                          width: 200.0,
-                          clipBehavior: Clip.antiAlias,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadiusDirectional.circular(20.0),
-                          ),
-                          child: Hero(
-                            tag: controller.productDetails.id!,
-                            child: Image.network(
-                              height: 200.0,
-                              width: 200.0,
-                              fit: BoxFit.fill,
-                              controller.productDetails.image!,
+                        child: InkWell(
+                          onTap: (){
+                            Get.to(const CheckOutView());
+                          },
+                          child: Container(
+                            height: 200.0,
+                            width: 200.0,
+                            clipBehavior: Clip.antiAlias,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadiusDirectional.circular(20.0),
+                            ),
+                            child: Hero(
+                              tag: controller.productDetails.id!,
+                              child: Image.network(
+                                height: 200.0,
+                                width: 200.0,
+                                fit: BoxFit.fill,
+                                controller.productDetails.image!,
+                              ),
                             ),
                           ),
                         ),
